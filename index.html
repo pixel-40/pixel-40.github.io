@@ -191,7 +191,7 @@
       url("${dataItem.link + dataItem.thumb}")`;
                 item.addEventListener("click", () => {
                   const params = new URLSearchParams({ target: dataItem.id });
-                  window.location.href = `game.html?${params.toString()}`;
+                  window.location.href = `games/${slugify(dataItem.name, dataItem.id)}.html`;
                 });
               }
             });
@@ -208,7 +208,7 @@
             newArray.forEach((game) => {
               if (list.includes(game.id.toString())) {
                 const clonedItem = document.createElement("a");
-                clonedItem.href = `game.html?target=${game.id}`;
+                clonedItem.href = `games/${slugify(game.name, game.id)}.html`;
                 clonedItem.innerHTML = game.name;
                 clonedItem.id = `game${game.id}`;
                 clonedItem.classList.add("game");

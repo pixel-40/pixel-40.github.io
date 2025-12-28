@@ -209,7 +209,7 @@ function arrangeBoxes(newArrayy, newIds) {
           url("${item.link + item.thumb}")`;
         newBox.addEventListener("click", () => {
           const params = new URLSearchParams({ target: item.id });
-          window.location.href = `games/${slugify(newArray[i].name, newGameID)}.html`;
+          window.location.href = `games/${slugify(item.name, item.id)}.html`;
         });
       }
     });
@@ -329,8 +329,8 @@ function select() {
       list.innerHTML = item.outerHTML;
       let id = item.getAttribute("id").slice(4);
       list.children[0].addEventListener("click", () => {
-        const params = new URLSearchParams({ target: id });
-        window.location.href = `games/${slugify(newArray[i].name, newGameID)}.html`;
+        const gameName = item.getAttribute("name") || item.textContent || "game";
+        window.location.href = `games/${slugify(gameName, id)}.html`;
       });
     }
   });
